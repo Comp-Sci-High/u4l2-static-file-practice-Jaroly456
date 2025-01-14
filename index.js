@@ -12,11 +12,15 @@ app.use((req, res, next) => {
 // Note that package-lock.json & package.json are server side files
 
 // Step 4. Add static file middleware
-
+app.use(express.static(__dirname + "/public"))
 // Step 5. Create a route handler to '/' that sends the confetti.html file
-
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/confetti.html")
+})
 // Step 6. Create a route handler to '/cat' that sends the cat.gif file
-
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/cat.gif")
+})
 // Step 7. Run your server and test your route
 
 // Step 8. Something looks off on your confetti page, figure out why your styling is missing and fix it.
